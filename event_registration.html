@@ -43,6 +43,30 @@
   </style>
 </head>
 <body>
+  <form
+  action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScJx4zB1uZNIlGHUG4fJ5-amtI7Ie-YL9FCY7JaT5NtU5trfg/formResponse"
+  method="POST"
+  target="iframe">
+  <label for="name">Name:</label>
+  <input type="text" name="entry.123456" id="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" name="entry.789012" id="email" required>
+
+  <label for="participants">Number of Participants:</label>
+  <input type="number" name="entry.345678" id="participants" required>
+
+  <button type="submit">Submit</button>
+</form>
+
+<!-- Embed the Google Form in an iframe for users to verify their inputs -->
+<iframe
+  src="https://docs.google.com/forms/d/e/1FAIpQLScJx4zB1uZNIlGHUG4fJ5-amtI7Ie-YL9FCY7JaT5NtU5trfg/viewform"
+  width="100%"
+  height="800"
+  frameborder="0">
+</iframe>
+
   <div class="form-container">
     <div class="calculator">
       <h3>Fee Calculator</h3>
