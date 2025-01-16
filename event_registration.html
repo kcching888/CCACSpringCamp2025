@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .form-container {
+      max-width: 800px;
+      margin: auto;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .calculator {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .calculator label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .total {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="calculator">
+      <h3>Fee Calculator</h3>
+      <label for="num-participants">Number of Participants:</label>
+      <input type="number" id="num-participants" placeholder="Enter number of participants" min="1">
+
+      <label for="num-nights">Number of Nights (Hotel):</label>
+      <input type="number" id="num-nights" placeholder="Enter number of nights" min="1">
+
+      <label for="num-days">Number of Days (Meals):</label>
+      <input type="number" id="num-days" placeholder="Enter number of days" min="1">
+
+      <p class="total">Total Fee: $<span id="total-fee">0</span></p>
+    </div>
+
+    <iframe
+      src="https://docs.google.com/forms/d/e/1Hj9XlnPqFrnXn9h_88SGK556QpPxsIDlym3oEBGcBnY/prefill"
+      title="Event Registration Form">
+    </iframe>
+  </div>
+
+  <script>
+    const hotelPrice = 100; // Price per person per night
+    const mealPrice = 50; // Price per person per day
+
+    // Elements
+    const numParticipantsInput = document.getElementById('num-participants');
+    const numNightsInput = document.getElementById('num-nights');
+    const numDaysInput = document.getElementById('num-days');
+    const totalFeeElement = document.getElementById('total-fee');
+
+    // Calculate total fee
+    function calculateTotalFee() {
+      const numParticipants = parseInt(numParticipantsInput.value) || 0;
+      const numNights = parseInt(numNightsInput.value) || 0;
+      const numDays = parseInt(numDaysInput.value) || 0;
+
+      const totalFee = (numParticipants * numNights * hotelPrice) + (numParticipants * numDays * mealPrice);
+      totalFeeElement.textContent = totalFee.toFixed(2); // Display the total fee
+    }
+
+    // Add event listeners
+    numParticipantsInput.addEventListener('input', calculateTotalFee);
+    numNightsInput.addEventListener('input', calculateTotalFee);
+    numDaysInput.addEventListener('input', calculateTotalFee);
+  </script>
+</body>
+</html>
