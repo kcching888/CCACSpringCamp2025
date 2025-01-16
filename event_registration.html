@@ -140,7 +140,22 @@
   <script type="text/javascript">
   function OnSubmitForm()
     {
-        document.prefill.action="https://docs.google.com/forms/d/e/1FAIpQLScJx4zB1uZNIlGHUG4fJ5-amtI7Ie-YL9FCY7JaT5NtU5trfg/viewform?usp=pp_url&"+"entry.1607513178="+entry.1607513178
+      const adults = document.getElementById("adults").value;
+      const children = document.getElementById("children").value;
+      const infants = document.getElementById("infants").value;
+      const duration = document.getElementById("duration").value;
+      const accomodation = document.getElementById("accomodation").value;
+
+  // Construct the action URL dynamically
+      const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLScJx4zB1uZNIlGHUG4fJ5-amtI7Ie-YL9FCY7JaT5NtU5trfg/viewform";
+      const queryParams = `?usp=pp_url&entry.1607513178=${encodeURIComponent(adults)}&entry.523040310=${encodeURIComponent(children)}&entry.308155383=${encodeURIComponent(infants)}&entry.1109016814=${encodeURIComponent(duration)}&entry.438181447=${encodeURIComponent(accomodation)}`;
+  
+  // Update the form action
+  document.prefill.action = baseUrl + queryParams;
+
+  // Return true to allow the form submission
+  return true;
+        
         
     }
 </script>
